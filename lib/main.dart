@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/cubit/news_cubit.dart';
+import 'package:news_app/services/news_service.dart';
+import 'package:news_app/views/home_view.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+
+  NewsService.init();
   runApp(const MyApp());
+}
+
+class MyBlocObserver extends BlocObserver {
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    debugPrint("$bloc $change");
+    super.onChange(bloc, change);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +26,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  const MaterialApp(
-      debugShowCheckedModeBanner: false,
-    home : HomePage(),
+    return BlocProvider(
+      create: (context) => NewsCubit()..getGeneralNews(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomeView(),
+      ),
     );
   }
 }

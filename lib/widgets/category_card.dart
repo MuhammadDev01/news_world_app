@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
-import 'package:news_app/pages/category_page.dart';
+import 'package:news_app/views/category_view.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -16,7 +16,7 @@ class CategoryCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CategoryPage(category: category.name,),
+            builder: (context) => CategoryView(category: category.name,),
           ),
         );
       },

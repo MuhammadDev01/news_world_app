@@ -12,31 +12,30 @@ class NewsItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
-            child: article.image != null
+            child: article.imageUrl != null
                 ? Image.network(
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 220,
-                    article.image!,
+                    article.imageUrl!,
                   )
                 : Container(
-                  height: 220,
-                  width: double.infinity,
-                  color: Colors.grey[300],
-                  child: const Icon(
+                    height: 220,
+                    width: double.infinity,
+                    color: Colors.grey[300],
+                    child: const Icon(
                       Icons.remove_circle,
-                              
                       size: 64,
-                      color: Colors.blueAccent, 
+                      color: Colors.blueAccent,
                     ),
-                ),
+                  ),
           ),
           const SizedBox(
             height: 10,
           ),
-           Text(
+          Text(
             textAlign: TextAlign.right,
-            article.title??'empty..!',
+            article.title ?? 'empty..!',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
@@ -44,8 +43,8 @@ class NewsItem extends StatelessWidget {
               fontSize: 22,
             ),
           ),
-           Text(
-            article.subTitle??'',
+          Text(
+            article.description??'empty..!',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
