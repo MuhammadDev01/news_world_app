@@ -9,7 +9,7 @@ class CategoryView extends StatelessWidget {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           child: const Icon(
-            Icons.arrow_back_ios_new,
+            Icons.arrow_back,
           ),
           onPressed: () {
             Navigator.pop(context);

@@ -18,15 +18,15 @@ class NewsCubit extends Cubit<NewsStates> {
   Future<List<ArticleModel>> getHeadLinesNews({
     required String category,
   }) async {
-    emit(GeneralNewsLoadingState());
-    NewsService.getNews(url: 'top-headlines', query: {
+    emit(NewsLoadingState());
+    await NewsService.getNews(url: 'top-headlines', query: {
       'category': category,
       'country': 'us',
     }).then((value) {
-      //   emit(GeneralNewsSuccessState());
-      // for (var element in value!.data['articles']) {
-      //   articles.add(ArticleModel.fromJson(element));
-      // }
+      emit(NewsSuccessState());
+      return value;
+    }).catchError((e) {
+      emit(NewsFailureState(errorMessage: e.toString()));
     });
 
     return articles;

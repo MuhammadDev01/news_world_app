@@ -4,6 +4,15 @@ sealed class NewsStates {}
 
 final class NewsInitialState extends NewsStates {}
 
+final class NewsLoadingState extends NewsStates {}
+
+final class NewsSuccessState extends NewsStates {}
+
+final class NewsFailureState extends NewsStates {
+  final String errorMessage;
+  NewsFailureState({required this.errorMessage});
+}
+
 final class SearchNewsSuccessState extends NewsStates {}
 
 final class SearchNewsFailureState extends NewsStates {}
