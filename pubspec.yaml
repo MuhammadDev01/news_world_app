@@ -47,9 +47,26 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-  
-  
-  
+    - assets/fonts/
+  fonts:
+      - family: Oswald
+        fonts:
+          - asset: assets/fonts/Oswald-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Oswald-SemiBold.ttf
+            weight: 600
+          - asset: assets/fonts/Oswald-Bold.ttf
+            weight: 700
+      # - family: Teko
+      #   fonts:
+      #     - asset: assets/fonts/Teko-Regular.ttf
+      #       weight: 400
+      #     - asset: assets/fonts/Teko-SemiBold.ttf
+      #       weight: 600
+      #     - asset: assets/fonts/Teko-Medium.ttf
+      #       weight: 500      
+    
+    
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/utils/
@@ -65,10 +82,8 @@ flutter_assets:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  
+        
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

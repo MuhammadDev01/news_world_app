@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/constant.dart';
 import 'package:news_app/cubit/news_cubit.dart';
 import 'package:news_app/services/news_service.dart';
 import 'package:news_app/views/home_view.dart';

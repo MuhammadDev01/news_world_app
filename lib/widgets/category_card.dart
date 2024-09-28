@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/models/category_model.dart';
+import 'package:news_app/utils/app_style.dart';
 import 'package:news_app/views/category_view.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -39,11 +40,7 @@ class CategoryCard extends StatelessWidget {
             ),
             Text(
               category.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                fontSize: 18, // يمكنك تعديل الحجم إذا لزم الأمر
-              ),
+              style: AppStyle.style16medium,
             ),
           ],
         ),
