@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/utils/app_style.dart';
-import 'package:news_app/views/category_view.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
-    required this.category,
+    required this.modelCategory,
   });
-  final CategoryModel category;
+  final CategoryModel modelCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,9 @@ class CategoryCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CategoryView(
-                category: category.name,
-              ),
+              builder: (context) {
+                return modelCategory.page;
+              },
             ),
           );
         },
@@ -32,14 +31,16 @@ class CategoryCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: SvgPicture.asset(
-                category.image,
+                modelCategory.image,
                 colorFilter: ColorFilter.mode(
-                    Colors.grey.shade900.withOpacity(0.3), BlendMode.srcOver),
+                  Colors.grey.shade900.withOpacity(0.3),
+                  BlendMode.srcOver,
+                ),
                 height: 120,
               ),
             ),
             Text(
-              category.name,
+              modelCategory.name,
               style: AppStyle.style16medium,
             ),
           ],

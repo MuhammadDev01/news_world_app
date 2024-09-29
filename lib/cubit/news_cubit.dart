@@ -8,57 +8,128 @@ class NewsCubit extends Cubit<NewsStates> {
   static NewsCubit get(context) => BlocProvider.of(context);
 
   List<ArticleModel> generalArticles = [];
-  List<ArticleModel> articles = [];
-  //List<ArticleModel> sportsArticles = [];
-  //List<ArticleModel> healthArticles = [];
-  //List<ArticleModel> scienceArticles = [];
-  //List<ArticleModel> technologyArticles = [];
-  //List<ArticleModel> searchArticles = [];
+  List<ArticleModel> businessArticles = [];
+  List<ArticleModel> sportsArticles = [];
+  List<ArticleModel> healthArticles = [];
+  List<ArticleModel> scienceArticles = [];
+  List<ArticleModel> technologyArticles = [];
+  List<ArticleModel> searchArticles = [];
 
-  Future<List<ArticleModel>> getHeadLinesNews({
+  Future<void> getNewsByCategory({
     required String category,
+    required Function emitLoadingState,
+    required Function emitFailureState,
+    required Function emitSuccessState,
+    required List<ArticleModel> articlesList,
   }) async {
-    emit(NewsLoadingState());
-    await NewsService.getNews(url: 'top-headlines', query: {
-      'category': category,
-      'country': 'us',
-    }).then((value) {
-      emit(NewsSuccessState());
-      return value;
-    }).catchError((e) {
-      emit(NewsFailureState(errorMessage: e.toString()));
-    });
+    emitLoadingState();
 
-    return articles;
-  }
-
-  getGeneralNews() async {
-    emit(GeneralNewsLoadingState());
-
-    if (generalArticles.isEmpty) {
-      NewsService.getNews(url: 'top-headlines', query: {
-        'category': 'general',
-        'country': 'us',
-      }).then((value) {
+    if (articlesList.isEmpty) {
+      NewsService.getNews(
+        url: 'top-headlines',
+        query: {
+          'category': category,
+          'country': 'us',
+        },
+      ).then((value) {
         if (value.isEmpty) {
-          emit(GeneralNewsFailureState(errorMessage: 'error'));
+          emitFailureState(errorMessage: 'Error fetching $category news');
         } else {
-          generalArticles = value;
-          emit(GeneralNewsSuccessState());
+          articlesList.addAll(value);
+          emitSuccessState();
         }
+      }).catchError((error) {
+        emitFailureState(errorMessage: 'Error: $error');
       });
     } else {
-      emit(GeneralNewsSuccessState());
+      emitSuccessState();
     }
   }
-}
 
-Future<void> getSearchNews({required String fromUser}) async {
-  NewsService.getNews(url: 'everything', query: {
-    'q': fromUser,
-  }).then((value) {
-    // for (var element in value!.data['articles']) {
-    //   searchArticles.add(ArticleModel.fromJson(element));
-    // }
-  });
+  getBusinessNews() async {
+    await getNewsByCategory(
+      category: 'business',
+      emitLoadingState: () => emit(BusinessNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(BusinessNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(BusinessNewsSuccessState()),
+      articlesList: businessArticles,
+    );
+  }
+
+  getHealthNews() async {
+    await getNewsByCategory(
+      category: 'health',
+      emitLoadingState: () => emit(HealthNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(HealthNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(HealthNewsSuccessState()),
+      articlesList: healthArticles,
+    );
+  }
+
+  getSportsNews() async {
+    await getNewsByCategory(
+      category: 'sports',
+      emitLoadingState: () => emit(SportsNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(SportsNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(SportsNewsSuccessState()),
+      articlesList: sportsArticles,
+    );
+  }
+
+  getScienceNews() async {
+    await getNewsByCategory(
+      category: 'science',
+      emitLoadingState: () => emit(ScienceNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(ScienceNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(ScienceNewsSuccessState()),
+      articlesList: scienceArticles,
+    );
+  }
+
+  getTechnologyNews() async {
+    await getNewsByCategory(
+      category: 'technology',
+      emitLoadingState: () => emit(TechnologyNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(TechnologyNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(TechnologyNewsSuccessState()),
+      articlesList: technologyArticles,
+    );
+  }
+
+  getSearchNews(String query) async {
+    emit(SearchNewsLoadingState());
+
+    NewsService.getNews(
+      url: 'everything',
+      query: {
+        'q': query,
+      },
+    ).then((value) {
+      if (value.isEmpty) {
+        emit(SearchNewsFailureState(
+            errorMessage: 'No results found for $query'));
+      } else {
+        searchArticles = value;
+        emit(SearchNewsSuccessState());
+      }
+    }).catchError((error) {
+      emit(SearchNewsFailureState(errorMessage: 'Error: $error'));
+    });
+  }
+
+  void getGeneralNews() async {
+    await getNewsByCategory(
+      category: 'general',
+      emitLoadingState: () => emit(GeneralNewsLoadingState()),
+      emitFailureState: (errorMessage) =>
+          emit(GeneralNewsFailureState(errorMessage: errorMessage)),
+      emitSuccessState: () => emit(GeneralNewsSuccessState()),
+      articlesList: generalArticles,
+    );
+  }
 }

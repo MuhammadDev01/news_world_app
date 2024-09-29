@@ -19,12 +19,7 @@ class GeneralView extends StatelessWidget {
           return SliverToBoxAdapter(
               child: Center(child: Text(state.errorMessage)));
         }
-        if (state is GeneralNewsSuccessState) {
-          return NewsListView(articles: NewsCubit.get(context).generalArticles);
-        }
-
-        return const SliverToBoxAdapter(
-            child: Center(child: Text('Error try again')));
+        return NewsListView(articles: NewsCubit.get(context).generalArticles);
       },
     );
   }
