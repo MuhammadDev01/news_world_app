@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/constant.dart';
 import 'package:news_app/cubit/news_cubit.dart';
@@ -32,6 +33,15 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: HomeView(),
+        // theme: ThemeData(
+        //   appBarTheme: const AppBarTheme(
+        //     systemOverlayStyle: SystemUiOverlayStyle(
+        //       statusBarColor: Colors.white,
+        //       systemNavigationBarColor: Colors.white,
+        //       systemNavigationBarDividerColor: Colors.white,
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }
