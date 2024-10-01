@@ -102,6 +102,7 @@ class NewsCubit extends Cubit<NewsStates> {
   }
 
   getSearchNews(String query) async {
+    searchArticles = [];
     emit(SearchNewsLoadingState());
 
     NewsService.getNews(

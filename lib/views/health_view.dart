@@ -32,7 +32,7 @@ class _HealthViewState extends State<HealthView> {
         body: Stack(
           children: [
             Image.asset(
-              Assets.imagesT,
+              Assets.imagesBackground,
               height: double.infinity,
               fit: BoxFit.cover,
             ),

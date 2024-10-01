@@ -34,44 +34,52 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.10+1
+  webview_flutter: ^4.9.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
+  icons_launcher: ^3.0.0 
   flutter_test:
     sdk: flutter
 
+icons_launcher:
+  image_path: "assets/images/logo.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
-flutter: 
+flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/fonts/
   fonts:
-      - family: Oswald
-        fonts:
-          - asset: assets/fonts/Oswald-Regular.ttf
-            weight: 400
-          - asset: assets/fonts/Oswald-SemiBold.ttf
-            weight: 600
-          - asset: assets/fonts/Oswald-Bold.ttf
-            weight: 700
-      # - family: Teko
-      #   fonts:
-      #     - asset: assets/fonts/Teko-Regular.ttf
-      #       weight: 400
-      #     - asset: assets/fonts/Teko-SemiBold.ttf
-      #       weight: 600
-      #     - asset: assets/fonts/Teko-Medium.ttf
-      #       weight: 500      
-    
-    
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/Oswald-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Oswald-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Oswald-Bold.ttf
+          weight: 700
+    # - family: Teko
+    #   fonts:
+    #     - asset: assets/fonts/Teko-Regular.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/Teko-SemiBold.ttf
+    #       weight: 600
+    #     - asset: assets/fonts/Teko-Medium.ttf
+    #       weight: 500
+
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/utils/
   filename: assets_images.dart
-  field_prefix: null  
+  field_prefix: null
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -82,8 +90,6 @@ flutter_assets:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  
-        
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

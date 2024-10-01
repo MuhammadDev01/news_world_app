@@ -22,7 +22,6 @@ class NewsListView extends StatelessWidget {
             ),
           )
         : ListView.builder(
-            padding: const EdgeInsets.all(10),
             itemBuilder: (context, index) => NewsItem(
               article: articles[index],
             ),

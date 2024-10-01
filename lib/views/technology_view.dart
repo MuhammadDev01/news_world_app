@@ -33,7 +33,7 @@ class _TechnologyViewState extends State<TechnologyView> {
         body: Stack(
           children: [
             Image.asset(
-              Assets.imagesT,
+              Assets.imagesBackground,
               height: double.infinity,
               fit: BoxFit.cover,
             ),

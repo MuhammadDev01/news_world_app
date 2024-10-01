@@ -33,7 +33,7 @@ class _SportsViewState extends State<SportsView> {
         body: Stack(
           children: [
             Image.asset(
-              Assets.imagesT,
+              Assets.imagesBackground,
               height: double.infinity,
               fit: BoxFit.cover,
             ),

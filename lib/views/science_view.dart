@@ -33,7 +33,7 @@ class _ScienceViewState extends State<ScienceView> {
         body: Stack(
           children: [
             Image.asset(
-              Assets.imagesT,
+              Assets.imagesBackground,
               height: double.infinity,
               fit: BoxFit.cover,
             ),

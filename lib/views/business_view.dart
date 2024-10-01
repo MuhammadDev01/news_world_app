@@ -33,7 +33,7 @@ class _BusinessViewState extends State<BusinessView> {
         body: Stack(
           children: [
             Image.asset(
-              Assets.imagesT,
+              Assets.imagesBackground,
               height: double.infinity,
               fit: BoxFit.cover,
             ),
