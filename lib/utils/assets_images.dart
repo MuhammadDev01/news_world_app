@@ -2,33 +2,36 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesBackground
+  /// assets/images/background.png
+  static const String imagesBackground = "assets/images/background.png";
 
   /// Assets for imagesBusiness
-  /// assets/images/business.svg
-  static const String imagesBusiness = "assets/images/business.svg";
+  /// assets/images/business.png
+  static const String imagesBusiness = "assets/images/business.png";
 
   /// Assets for imagesHealth
-  /// assets/images/health.svg
-  static const String imagesHealth = "assets/images/health.svg";
+  /// assets/images/health.png
+  static const String imagesHealth = "assets/images/health.png";
 
   /// Assets for imagesLogo
-  /// assets/images/logo.svg
-  static const String imagesLogo = "assets/images/logo.svg";
+  /// assets/images/logo.png
+  static const String imagesLogo = "assets/images/logo.png";
 
   /// Assets for imagesScience
-  /// assets/images/Science.svg
-  static const String imagesScience = "assets/images/Science.svg";
+  /// assets/images/Science.png
+  static const String imagesScience = "assets/images/Science.png";
 
   /// Assets for imagesSport
-  /// assets/images/sport.svg
-  static const String imagesSport = "assets/images/sport.svg";
+  /// assets/images/sport.png
+  static const String imagesSport = "assets/images/sport.png";
 
   /// Assets for imagesT
   /// assets/images/t.jpg
-  static const String imagesBackground = "assets/images/t.jpg";
+  static const String imagesT = "assets/images/t.jpg";
 
   /// Assets for imagesTech
-  /// assets/images/tech.svg
-  static const String imagesTech = "assets/images/tech.svg";
+  /// assets/images/tech.png
+  static const String imagesTech = "assets/images/tech.png";
 }
 

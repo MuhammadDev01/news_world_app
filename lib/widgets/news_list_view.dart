@@ -21,11 +21,13 @@ class NewsListView extends StatelessWidget {
               ),
             ),
           )
-        : ListView.builder(
-            itemBuilder: (context, index) => NewsItem(
-              article: articles[index],
+        : Expanded(
+          child: ListView.builder(
+              itemBuilder: (context, index) => NewsItem(
+                article: articles[index],
+              ),
+              itemCount: articles.length,
             ),
-            itemCount: articles.length,
-          );
+        );
   }
 }

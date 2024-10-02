@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/utils/app_style.dart';
 
@@ -25,25 +24,35 @@ class CategoryCard extends StatelessWidget {
             ),
           );
         },
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: SvgPicture.asset(
+        child: Container(
+          height: 120,
+          width: 120,
+
+          //          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+              image: AssetImage(
                 modelCategory.image,
-                colorFilter: ColorFilter.mode(
-                  Colors.grey.shade900.withOpacity(0.3),
-                  BlendMode.srcOver,
-                ),
-                height: 120,
               ),
+              fit: BoxFit.cover,
             ),
-            Text(
-              modelCategory.name,
-              style: AppStyle.style16medium,
-            ),
-          ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                alignment: Alignment.bottomCenter,
+                width: double.infinity,
+                padding: const EdgeInsets.all(3.0),
+                color: Colors.black.withOpacity(0.5),
+                child: Text(
+                  modelCategory.name,
+                  style: AppStyle.style16medium.copyWith(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

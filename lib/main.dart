@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/news_cubit.dart';
@@ -9,7 +11,12 @@ void main() {
   Bloc.observer = MyBlocObserver();
 
   NewsService.init();
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyBlocObserver extends BlocObserver {
@@ -28,9 +35,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NewsCubit()..getGeneralNews(),
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        home: const HomeView(),
         // theme: ThemeData(
         //   appBarTheme: const AppBarTheme(
         //     systemOverlayStyle: SystemUiOverlayStyle(
