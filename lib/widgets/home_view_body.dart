@@ -80,7 +80,7 @@ class BreakingNewsTitleAndSearchBar extends StatelessWidget {
               ),
               child: Text(
                 'Search 🔎',
-                style: AppStyle.style16medium.copyWith(color: Colors.white70),
+                style: AppStyle.style18medium(context).copyWith(color: Colors.white70),
               ),
             ),
           ),

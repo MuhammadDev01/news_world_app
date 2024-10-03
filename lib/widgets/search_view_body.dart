@@ -49,7 +49,7 @@ class SearchViewBody extends StatelessWidget {
                   return Center(
                     child: Text(
                       state.errorMessage,
-                      style: AppStyle.style16medium,
+                      style: AppStyle.style18medium(context),
                     ),
                   );
                 }
@@ -62,7 +62,7 @@ class SearchViewBody extends StatelessWidget {
                 return Center(
                     child: Text(
                   'No Search Found ',
-                  style: AppStyle.style16medium.copyWith(
+                  style: AppStyle.style18medium(context).copyWith(
                     fontSize: 26,
                     color: Colors.white70,
                   ),

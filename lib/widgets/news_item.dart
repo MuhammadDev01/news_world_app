@@ -24,7 +24,7 @@ class NewsItem extends StatelessWidget {
           article.imageUrl != null
               ? Container(
                   width: double.infinity,
-                  height: 220,
+                  height: MediaQuery.sizeOf(context).height * 0.4,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
@@ -61,15 +61,13 @@ class NewsItem extends StatelessWidget {
                     article.title ?? 'No Title..!',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: AppStyle.style16medium.copyWith(
-                      fontSize: 18,
-                    ),
+                    style: AppStyle.style18medium(context),
                   ),
                   Text(
                     article.description ?? 'No description..!',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: AppStyle.style16medium.copyWith(
+                    style: AppStyle.style18medium(context).copyWith(
                       color: Colors.white70,
                       fontWeight: FontWeight.normal,
                     ),

@@ -25,10 +25,8 @@ class CategoryCard extends StatelessWidget {
           );
         },
         child: Container(
-          height: 120,
-          width: 120,
-
-          //          width: double.infinity,
+          height: MediaQuery.sizeOf(context).height * 0.2,
+          width: MediaQuery.sizeOf(context).width * 0.3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -45,10 +43,17 @@ class CategoryCard extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 width: double.infinity,
                 padding: const EdgeInsets.all(3.0),
-                color: Colors.black.withOpacity(0.5),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5),
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                ),
                 child: Text(
                   modelCategory.name,
-                  style: AppStyle.style16medium.copyWith(color: Colors.white),
+                  style: AppStyle.style18medium(context)
+                      .copyWith(color: Colors.white),
                 ),
               ),
             ],
