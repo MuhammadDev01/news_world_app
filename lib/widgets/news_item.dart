@@ -13,71 +13,72 @@ class NewsItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => WebView(url: article.url!,),
+            builder: (context) => WebView(
+              url: article.url!,
+            ),
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
-              child: article.imageUrl != null
-                  ? Image.network(
+      child: Column(
+        children: [
+          article.imageUrl != null
+              ? Container(
+                  width: double.infinity,
+                  height: 220,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                    image: DecorationImage(
                       fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: 220,
-                      article.imageUrl!,
-                    )
-                  : Container(
-                      height: 220,
-                      width: double.infinity,
-                      color: Colors.grey[100],
-                      child: Icon(
-                        Icons.remove_circle,
-                        size: 64,
-                        color: Colors.red[900],
-                      ),
+                      image: NetworkImage(article.imageUrl!),
                     ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.red[900],
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(8),
-                    bottomRight: Radius.circular(8),
-                  )),
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: Column(
-                  children: [
-                    Text(
-                      article.title ?? 'No Title..!',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppStyle.style16medium.copyWith(
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      article.description ?? 'No description..!',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppStyle.style16medium.copyWith(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
+                  ),
+                )
+              : Container(
+                  height: 220,
+                  width: double.infinity,
+                  color: Colors.grey[100],
+                  child: Icon(
+                    Icons.remove_circle,
+                    size: 64,
+                    color: Colors.red[900],
+                  ),
                 ),
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.red[900],
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                )),
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Column(
+                children: [
+                  Text(
+                    article.title ?? 'No Title..!',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.style16medium.copyWith(
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    article.description ?? 'No description..!',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.style16medium.copyWith(
+                      color: Colors.white70,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

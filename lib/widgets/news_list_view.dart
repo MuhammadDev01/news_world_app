@@ -13,21 +13,24 @@ class NewsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return articles == NewsCubit.get(context).generalArticles
-        ? SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: articles.length,
-              (context, index) => NewsItem(
-                article: articles[index],
-              ),
+        ? SliverList.separated(
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 12,
+          ),
+            itemCount: articles.length,
+            itemBuilder: (context, index) => NewsItem(
+              article: articles[index],
             ),
           )
-        : Expanded(
-          child: ListView.builder(
-              itemBuilder: (context, index) => NewsItem(
-                article: articles[index],
-              ),
-              itemCount: articles.length,
+        : ListView.separated(
+            separatorBuilder: (context, index) => const SizedBox(
+              height: 12,
             ),
-        );
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+            itemBuilder: (context, index) => NewsItem(
+              article: articles[index],
+            ),
+            itemCount: articles.length,
+          );
   }
 }

@@ -43,10 +43,8 @@ class _SportsViewState extends State<SportsView> {
                 );
               }
 
-              return Expanded(
-                child: NewsListView(
-                  articles: NewsCubit.get(context).sportsArticles,
-                ),
+              return NewsListView(
+                articles: NewsCubit.get(context).sportsArticles,
               );
             },
           ),

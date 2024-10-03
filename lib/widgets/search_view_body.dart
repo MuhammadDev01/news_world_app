@@ -54,10 +54,8 @@ class SearchViewBody extends StatelessWidget {
                   );
                 }
                 if (state is SearchNewsSuccessState) {
-                  return Expanded(
-                    child: NewsListView(
-                      articles: NewsCubit.get(context).searchArticles,
-                    ),
+                  return NewsListView(
+                    articles: NewsCubit.get(context).searchArticles,
                   );
                 }
 

@@ -43,10 +43,8 @@ class _ScienceViewState extends State<ScienceView> {
                 );
               }
 
-              return Expanded(
-                child: NewsListView(
-                  articles: NewsCubit.get(context).scienceArticles,
-                ),
+              return NewsListView(
+                articles: NewsCubit.get(context).scienceArticles,
               );
             },
           ),

@@ -43,10 +43,8 @@ class _HealthViewState extends State<HealthView> {
                 );
               }
 
-              return Expanded(
-                child: NewsListView(
-                  articles: NewsCubit.get(context).healthArticles,
-                ),
+              return NewsListView(
+                articles: NewsCubit.get(context).healthArticles,
               );
             },
           ),

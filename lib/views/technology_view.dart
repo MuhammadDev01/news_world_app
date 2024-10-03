@@ -43,10 +43,8 @@ class _TechnologyViewState extends State<TechnologyView> {
                 );
               }
 
-              return Expanded(
-                child: NewsListView(
-                  articles: NewsCubit.get(context).technologyArticles,
-                ),
+              return NewsListView(
+                articles: NewsCubit.get(context).technologyArticles,
               );
             },
           ),
