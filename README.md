@@ -59,8 +59,8 @@
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/MuhammadDev01/news_app.git
-    cd news-app
+    git clone https://github.com/MuhammadDev01/news_world_app.git
+    cd news_world_app
     ```
 
 2. **Install dependencies**:
